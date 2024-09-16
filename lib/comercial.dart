@@ -16,8 +16,8 @@ class _ComercialPageState extends State<ComercialPage> {
           "As vendas do produto diminuiram em relação ao mês passado.",
       "teste": List.generate(5, (index) => 'Item $index'),
       "fields": <Map>[
-        {"name": "Mês atual:", "value": "Agosto"},
-        {"name": "Mês referencia:", "value": "Junho"},
+        {"name": "Mês atual:", "value": "Setembro"},
+        {"name": "Mês referencia:", "value": "Agosto"},
         {"name": "Quantidade:", "value": "7"},
         {"name": "Quantidade:", "value": "21"},
         {"name": "Receita:", "value": "R\$56,00"},
