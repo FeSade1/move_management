@@ -25,13 +25,13 @@ class _ComercialPageState extends State<ComercialPage> {
         {"name": "Variação:", "value": "14 UND (R\$112,00)"},
         {"name": "Variação:", "value": "14 UND (R\$112,00)"},
       ],
-      "color": "c0c0c0",
+      "color": "d44242",
       "photo": "https://logging.discloud.app/Expresso/brownies.png"
     },
     {
       "title": "Doces",
       "subtitle": "Variação nas vendas",
-      "color": "ffc70e",
+      "color": "4bab5d",
       "photo": "https://logging.discloud.app/Expresso/saches.png"
     }
   ];
@@ -40,7 +40,7 @@ class _ComercialPageState extends State<ComercialPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TabBar(),
+        const TabBar(),
         Expanded(
           child: ListView.separated(
             separatorBuilder: (context, index) => const SizedBox(
@@ -68,6 +68,7 @@ class TabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       color: Colors.black.withOpacity(0.15),
       child: Row(
         children: [
@@ -77,13 +78,42 @@ class TabBar extends StatelessWidget {
             },
             child: Container(
               alignment: Alignment.center,
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
+                color: Colors.yellow,
+              ),
+              height: 45,
+              child: const Text(
+                "Alertas",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(5, 1, 5, 1),
+            child: Container(
+              height: 30,
+              width: 1,
+              color: Colors.white,
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              print("tapped");
+            },
+            child: Container(
+              alignment: Alignment.center,
               padding: EdgeInsets.all(10),
               decoration: const BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
-                color: Colors.red,
+                color: Colors.yellow,
               ),
               height: 45,
-              child: Text("Alertas"),
+              child: const Text(
+                "Metas",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ],
