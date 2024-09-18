@@ -107,7 +107,7 @@ class TabBar extends StatelessWidget {
               padding: EdgeInsets.all(10),
               decoration: const BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
-                color: Colors.yellow,
+                color: Color.fromARGB(255, 150, 135, 1),
               ),
               height: 45,
               child: const Text(
