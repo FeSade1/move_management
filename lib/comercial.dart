@@ -84,7 +84,7 @@ class Card extends StatelessWidget {
                         items[i + 1]['name'])
                     .toString()
                     .length >
-                40)) {
+                35)) {
           souldbreak = true;
         }
         //${i + 1 < items.length ? ((items[i]['value'] + items[i]['name'] + items[i + 1]['value'] + items[i + 1]['name']).toString().length > 40 ? '\n' : ' ') : " "}
