@@ -51,7 +51,7 @@ class _ComercialPageState extends State<ComercialPage> {
               height: 10,
             ),
             padding: const EdgeInsets.only(
-                top: 20, left: 30, right: 30, bottom: 120),
+                top: 20, left: 15, right: 15, bottom: 120),
             itemCount: cardList.length,
             itemBuilder: (BuildContext context, int index) {
               return Card(data: cardList[index]);
