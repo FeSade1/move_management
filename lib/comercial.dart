@@ -26,11 +26,13 @@ class _ComercialPageState extends State<ComercialPage> {
         {"name": "Variação:", "value": "14 UND (R\$112,00)"},
       ],
       "color": "c0c0c0",
+      "photo": "https://logging.discloud.app/Expresso/brownies.png"
     },
     {
       "title": "Doces",
       "subtitle": "Variação nas vendas",
       "color": "ffc70e",
+      "photo": "https://logging.discloud.app/Expresso/saches.png"
     }
   ];
 
@@ -38,13 +40,7 @@ class _ComercialPageState extends State<ComercialPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 50,
-          color: Colors.grey,
-          child: const Row(
-            children: [Text("Teste"), Text("Teste2")],
-          ),
-        ),
+        TabBar(),
         Expanded(
           child: ListView.separated(
             separatorBuilder: (context, index) => const SizedBox(
@@ -59,6 +55,39 @@ class _ComercialPageState extends State<ComercialPage> {
           ),
         )
       ],
+    );
+  }
+}
+
+class TabBar extends StatelessWidget {
+  const TabBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      color: Colors.black.withOpacity(0.15),
+      child: Row(
+        children: [
+          GestureDetector(
+            onTap: () {
+              print("tapped");
+            },
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
+                color: Colors.red,
+              ),
+              height: 45,
+              child: Text("Alertas"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -130,11 +159,17 @@ class Card extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                color: Colors.white,
-                height: 120,
-                width: 120,
-              ),
+              data["photo"] != null
+                  ? SizedBox(
+                      height: 120,
+                      width: 120,
+                      child: Image.network(data["photo"], fit: BoxFit.contain),
+                    )
+                  : Container(
+                      color: Colors.white,
+                      height: 120,
+                      width: 120,
+                    ),
               const SizedBox(
                 width: 20,
               ),
