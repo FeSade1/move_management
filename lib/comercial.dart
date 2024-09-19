@@ -8,7 +8,7 @@ class ComercialPage extends StatefulWidget {
 }
 
 class _ComercialPageState extends State<ComercialPage> {
-  List<Map> cardList = [
+  List<Map> alertasList = [
     {
       "title": "Brownie recheado",
       "subtitle": "Variação nas vendas",
@@ -60,7 +60,7 @@ class _ComercialPageState extends State<ComercialPage> {
         TabBar(update: update),
         Expanded(
           child: tab == "Alertas"
-              ? AlertasTab(cardList: cardList)
+              ? AlertasTab(cardList: alertasList)
               : const Placeholder(),
         )
       ],
@@ -100,7 +100,54 @@ class TabBar extends StatefulWidget {
 }
 
 class _TabBarState extends State<TabBar> {
-  String selectedTab = "Alertas";
+  List<String> tabNames = <String>[
+    "Alertas",
+    "Metas",
+  ];
+  late String selectedTab = tabNames[0];
+  List<Widget> buildChildren() {
+    List<Widget> children = [];
+    for (var i = 0; i < tabNames.length; i++) {
+      // TO DO
+      var currentElement = tabNames[i];
+      Widget tab = GestureDetector(
+        onTap: () {
+          //print("Alertas tapped");
+          widget.update(currentElement);
+          setState(() {
+            selectedTab = currentElement;
+          });
+        },
+        child: Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            color: selectedTab == currentElement
+                ? Colors.yellow
+                : const Color.fromARGB(255, 150, 135, 1),
+          ),
+          height: 45,
+          child: Text(
+            currentElement,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
+      children.add(tab);
+      if (currentElement != tabNames[tabNames.length - 1]) {
+        children.add(Container(
+          padding: const EdgeInsets.fromLTRB(5, 1, 5, 1),
+          child: Container(
+            height: 30,
+            width: 1,
+            color: Colors.white,
+          ),
+        ));
+      }
+    }
+    return children;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,64 +156,7 @@ class _TabBarState extends State<TabBar> {
       padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       color: Colors.black.withOpacity(0.15),
       child: Row(
-        children: [
-          GestureDetector(
-            onTap: () {
-              print("Alertas tapped");
-              widget.update("Alertas");
-              setState(() {
-                selectedTab = "Alertas";
-              });
-            },
-            child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
-                color: selectedTab == "Alertas"
-                    ? Colors.yellow
-                    : const Color.fromARGB(255, 150, 135, 1),
-              ),
-              height: 45,
-              child: const Text(
-                "Alertas",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(5, 1, 5, 1),
-            child: Container(
-              height: 30,
-              width: 1,
-              color: Colors.white,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              print("Metas tapped");
-              widget.update("Metas");
-              setState(() {
-                selectedTab = "Metas";
-              });
-            },
-            child: Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
-                color: selectedTab == "Metas"
-                    ? Colors.yellow
-                    : const Color.fromARGB(255, 150, 135, 1),
-              ),
-              height: 45,
-              child: const Text(
-                "Metas",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ],
+        children: buildChildren(),
       ),
     );
   }
