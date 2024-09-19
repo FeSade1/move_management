@@ -69,10 +69,17 @@ class _ComercialPageState extends State<ComercialPage> {
   }
 }
 
-class TabBar extends StatelessWidget {
+class TabBar extends StatefulWidget {
   const TabBar({
     super.key,
   });
+
+  @override
+  State<TabBar> createState() => _TabBarState();
+}
+
+class _TabBarState extends State<TabBar> {
+  String selectedTab = "Alertas";
 
   @override
   Widget build(BuildContext context) {
@@ -84,14 +91,19 @@ class TabBar extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print("tapped");
+              print("Alertas tapped");
+              setState(() {
+                selectedTab = "Alertas";
+              });
             },
             child: Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
-                color: Colors.yellow,
+                color: selectedTab == "Alertas"
+                    ? Colors.yellow
+                    : const Color.fromARGB(255, 150, 135, 1),
               ),
               height: 45,
               child: const Text(
@@ -110,14 +122,19 @@ class TabBar extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print("tapped");
+              print("Metas");
+              setState(() {
+                selectedTab = "Metas";
+              });
             },
             child: Container(
               alignment: Alignment.center,
               padding: EdgeInsets.all(10),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
-                color: Color.fromARGB(255, 150, 135, 1),
+                color: selectedTab == "Metas"
+                    ? Colors.yellow
+                    : const Color.fromARGB(255, 150, 135, 1),
               ),
               height: 45,
               child: const Text(
@@ -197,7 +214,7 @@ class Card extends StatelessWidget {
           int.parse('0XFF${data["color"]}'),
         ),
       ),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       //height: 250,
       child: Column(
         children: [
@@ -215,7 +232,7 @@ class Card extends StatelessWidget {
                       width: 120,
                     ),
               const SizedBox(
-                width: 20,
+                width: 10,
               ),
               Expanded(
                 child: Column(
