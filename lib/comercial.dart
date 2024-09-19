@@ -13,25 +13,35 @@ class _ComercialPageState extends State<ComercialPage> {
       "title": "Brownie recheado",
       "subtitle": "Variação nas vendas",
       "description":
-          "As vendas do produto diminuiram em relação ao mês passado.",
-      "teste": List.generate(5, (index) => 'Item $index'),
+          "As vendas do produto aumentaram em relação ao mês anterior.",
       "fields": <Map>[
-        {"name": "Mês atual:", "value": "Setembro"},
-        {"name": "Mês referencia:", "value": "Agosto"},
-        {"name": "Quantidade:", "value": "7"},
-        {"name": "Quantidade:", "value": "21"},
-        {"name": "Receita:", "value": "R\$56,00"},
-        {"name": "Receita:", "value": "R\$168,00"},
-        {"name": "Variação:", "value": "14 UND (R\$112,00)"},
-        {"name": "Variação:", "value": "14 UND (R\$112,00)"},
+        {"name": "Mês referência:", "value": "Agosto"},
+        {"name": "Mês anterior:", "value": "Julho"},
+        {"name": "Quantidade:", "value": "176"},
+        {"name": "Quantidade:", "value": "123"},
+        {"name": "Receita:", "value": "R\$1408,00"},
+        {"name": "Receita:", "value": "R\$984,00"},
+        {"name": "Variação:", "value": "53 UND (R\$424,00)"},
       ],
-      "color": "d44242",
+      "color": "4bab5d",
       "photo": "https://logging.discloud.app/Expresso/brownies.png"
     },
     {
-      "title": "Doces",
+      "title": "Sachê de maionese",
       "subtitle": "Variação nas vendas",
-      "color": "4bab5d",
+      "description":
+          "As vendas do produto diminuiram em relação ao mês anterior.",
+      "fields": <Map>[
+        {"name": "Mês referência:", "value": "Agosto"},
+        {"name": "Mês anterior:", "value": "Julho"},
+        {"name": "Quantidade:", "value": "697"},
+        {"name": "Quantidade:", "value": "832"},
+        {"name": "Receita:", "value": "R\$697,00"},
+        {"name": "Receita:", "value": "R\$832,00"},
+        {"name": "Variação:", "value": "135 UND (R\$135,00)"},
+      ],
+      //"color": "4bab5d", //green
+      "color": "d44242", //red
       "photo": "https://logging.discloud.app/Expresso/saches.png"
     }
   ];
@@ -151,6 +161,8 @@ class Card extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              if (i + 1 >= items.length)
+                SizedBox(), // Center the text if there isn't a second field
               Text(
                 "${items[i]['name']}${souldbreak ? "\n" : " "}${items[i]['value']}",
                 style: const TextStyle(
@@ -159,6 +171,8 @@ class Card extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              if (i + 1 >= items.length)
+                SizedBox(), // Center the text if there isn't a second field
               if (i + 1 <
                   items.length) // Check if there's a second item in the pair
                 Text(
@@ -234,7 +248,7 @@ class Card extends StatelessWidget {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: data["teste"] != null ? buildRows(data["fields"]) : [],
+            children: data["fields"] != null ? buildRows(data["fields"]) : [],
           ),
         ],
       ),
