@@ -46,33 +46,54 @@ class _ComercialPageState extends State<ComercialPage> {
     }
   ];
 
+  String tab = "Alertas";
+  void update(String tabname) {
+    setState(() {
+      tab = tabname;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const TabBar(),
+        TabBar(update: update),
         Expanded(
-          child: ListView.separated(
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 10,
-            ),
-            padding: const EdgeInsets.only(
-                top: 20, left: 15, right: 15, bottom: 120),
-            itemCount: cardList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(data: cardList[index]);
-            },
-          ),
+          child: tab == "Alertas"
+              ? AlertasTab(cardList: cardList)
+              : const Placeholder(),
         )
       ],
     );
   }
 }
 
-class TabBar extends StatefulWidget {
-  const TabBar({
+class AlertasTab extends StatelessWidget {
+  const AlertasTab({
     super.key,
+    required this.cardList,
   });
+
+  final List<Map> cardList;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      separatorBuilder: (context, index) => const SizedBox(
+        height: 10,
+      ),
+      padding: const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 120),
+      itemCount: cardList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Card(data: cardList[index]);
+      },
+    );
+  }
+}
+
+class TabBar extends StatefulWidget {
+  final ValueChanged<String> update;
+  const TabBar({super.key, required this.update});
 
   @override
   State<TabBar> createState() => _TabBarState();
@@ -92,6 +113,7 @@ class _TabBarState extends State<TabBar> {
           GestureDetector(
             onTap: () {
               print("Alertas tapped");
+              widget.update("Alertas");
               setState(() {
                 selectedTab = "Alertas";
               });
@@ -122,7 +144,8 @@ class _TabBarState extends State<TabBar> {
           ),
           GestureDetector(
             onTap: () {
-              print("Metas");
+              print("Metas tapped");
+              widget.update("Metas");
               setState(() {
                 selectedTab = "Metas";
               });
