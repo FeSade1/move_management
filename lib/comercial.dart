@@ -8,45 +8,62 @@ class ComercialPage extends StatefulWidget {
 }
 
 class _ComercialPageState extends State<ComercialPage> {
-  List<Map> alertasList = [
-    {
-      "title": "Brownie recheado",
-      "subtitle": "Variação nas vendas",
-      "description":
-          "As vendas do produto aumentaram em relação ao mês anterior.",
-      "fields": <Map>[
-        {"name": "Mês referência:", "value": "Agosto"},
-        {"name": "Mês anterior:", "value": "Julho"},
-        {"name": "Quantidade:", "value": "176"},
-        {"name": "Quantidade:", "value": "123"},
-        {"name": "Receita:", "value": "R\$1408,00"},
-        {"name": "Receita:", "value": "R\$984,00"},
-        {"name": "Variação:", "value": "53 UND (R\$424,00)"},
-      ],
-      "color": "4bab5d",
-      "photo": "https://logging.discloud.app/Expresso/brownies.png"
-    },
-    {
-      "title": "Sachê de maionese",
-      "subtitle": "Variação nas vendas",
-      "description":
-          "As vendas do produto diminuiram em relação ao mês anterior.",
-      "fields": <Map>[
-        {"name": "Mês referência:", "value": "Agosto"},
-        {"name": "Mês anterior:", "value": "Julho"},
-        {"name": "Quantidade:", "value": "697"},
-        {"name": "Quantidade:", "value": "832"},
-        {"name": "Receita:", "value": "R\$697,00"},
-        {"name": "Receita:", "value": "R\$832,00"},
-        {"name": "Variação:", "value": "135 UND (R\$135,00)"},
-      ],
-      //"color": "4bab5d", //green
-      "color": "d44242", //red
-      "photo": "https://logging.discloud.app/Expresso/saches.png"
-    }
-  ];
+  Map alertasList = {
+    "Alertas": [
+      {
+        "title": "Brownie recheado",
+        "subtitle": "Variação nas vendas",
+        "description":
+            "As vendas do produto aumentaram em relação ao mês anterior.",
+        "fields": <Map>[
+          {"name": "Mês referência:", "value": "Agosto"},
+          {"name": "Mês anterior:", "value": "Julho"},
+          {"name": "Quantidade:", "value": "176"},
+          {"name": "Quantidade:", "value": "123"},
+          {"name": "Receita:", "value": "R\$1408,00"},
+          {"name": "Receita:", "value": "R\$984,00"},
+          {"name": "Variação:", "value": "53 UND (R\$424,00)"},
+        ],
+        "color": "4bab5d",
+        "photo": "https://logging.discloud.app/Expresso/brownies.png"
+      },
+      {
+        "title": "Sachê de maionese",
+        "subtitle": "Variação nas vendas",
+        "description":
+            "As vendas do produto diminuiram em relação ao mês anterior.",
+        "fields": <Map>[
+          {"name": "Mês referência:", "value": "Agosto"},
+          {"name": "Mês anterior:", "value": "Julho"},
+          {"name": "Quantidade:", "value": "697"},
+          {"name": "Quantidade:", "value": "832"},
+          {"name": "Receita:", "value": "R\$697,00"},
+          {"name": "Receita:", "value": "R\$832,00"},
+          {"name": "Variação:", "value": "135 UND (R\$135,00)"},
+        ],
+        //"color": "4bab5d", //green
+        "color": "d44242", //red
+        "photo": "https://logging.discloud.app/Expresso/saches.png"
+      }
+    ],
+    "Metas": [
+      {
+        "title": "Chopp Pilsen",
+        "subtitle": "Progresso da meta",
+        "fields": <Map>[
+          {"name": "Vendas:", "value": "70"},
+          {"name": "Meta:", "value": "100"},
+          {"name": "Variação:", "value": "135 UND (R\$135,00)"},
+        ],
+        "progress": 75,
+        "color": "547cb8",
+        "photo": "https://logging.discloud.app/Expresso/pilsen.jpg"
+      }
+    ],
+  };
 
   String tab = "Alertas";
+  late Widget page;
   void update(String tabname) {
     setState(() {
       tab = tabname;
@@ -55,38 +72,20 @@ class _ComercialPageState extends State<ComercialPage> {
 
   @override
   Widget build(BuildContext context) {
+    switch (tab) {
+      case "Alertas":
+        page = CardBuilder(cardList: alertasList["Alertas"]);
+      case "Metas":
+        //page = MetasTab(cardList: alertasList);   // Decided to go with diff aproach
+        page = CardBuilder(cardList: alertasList["Metas"]);
+    }
     return Column(
       children: [
         TabBar(update: update),
         Expanded(
-          child: tab == "Alertas"
-              ? AlertasTab(cardList: alertasList)
-              : const Placeholder(),
+          child: page,
         )
       ],
-    );
-  }
-}
-
-class AlertasTab extends StatelessWidget {
-  const AlertasTab({
-    super.key,
-    required this.cardList,
-  });
-
-  final List<Map> cardList;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 10,
-      ),
-      padding: const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 120),
-      itemCount: cardList.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Card(data: cardList[index]);
-      },
     );
   }
 }
@@ -162,6 +161,29 @@ class _TabBarState extends State<TabBar> {
   }
 }
 
+class CardBuilder extends StatelessWidget {
+  const CardBuilder({
+    super.key,
+    required this.cardList,
+  });
+
+  final List cardList;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      separatorBuilder: (context, index) => const SizedBox(
+        height: 10,
+      ),
+      padding: const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 120),
+      itemCount: cardList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Card(data: cardList[index]);
+      },
+    );
+  }
+}
+
 class Card extends StatelessWidget {
   final Map data;
 
@@ -192,7 +214,7 @@ class Card extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               if (i + 1 >= items.length)
-                SizedBox(), // Center the text if there isn't a second field
+                const SizedBox(), // Center the text if there isn't a second field
               Text(
                 "${items[i]['name']}${souldbreak ? "\n" : " "}${items[i]['value']}",
                 style: const TextStyle(
@@ -202,7 +224,7 @@ class Card extends StatelessWidget {
                 ),
               ),
               if (i + 1 >= items.length)
-                SizedBox(), // Center the text if there isn't a second field
+                const SizedBox(), // Center the text if there isn't a second field
               if (i + 1 <
                   items.length) // Check if there's a second item in the pair
                 Text(
@@ -232,6 +254,7 @@ class Card extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            //mainAxisAlignment: MainAxisAlignment.start,
             children: [
               data["photo"] != null
                   ? SizedBox(
@@ -249,6 +272,7 @@ class Card extends StatelessWidget {
               ),
               Expanded(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       data["title"],
@@ -280,8 +304,36 @@ class Card extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: data["fields"] != null ? buildRows(data["fields"]) : [],
           ),
+          if (data["progress"] != null)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(6),
+                      bottomLeft: Radius.circular(6),
+                    ),
+                    color: Color(0XFF4bab5d),
+                  ),
+                  height: 20,
+                  width: 275 * data["progress"] / 100,
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(6),
+                      bottomRight: Radius.circular(6),
+                    ),
+                  ),
+                  height: 20,
+                  width: 275 * (100 - data["progress"]) / 100,
+                ),
+              ],
+            ),
         ],
       ),
     );
   }
-} //teste
+}
