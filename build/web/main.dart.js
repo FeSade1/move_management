@@ -19780,7 +19780,7 @@ a_o:function a_o(a){this.a=a},
 q2:function q2(a){this.a=a},
 vn:function vn(a){var _=this
 _.d=a
-_.e="Alertas"
+_.e="Metas"
 _.f=$
 _.c=_.a=null},
 a1Q:function a1Q(a,b){this.a=a
@@ -60664,8 +60664,8 @@ s.toString
 return B.c.aK(r,s)},
 $S:399}
 A.q2.prototype={
-ai(){var s="Varia\xe7\xe3o nas vendas",r="135 UND (R$135,00)",q=t.z,p=t.n4,o=t.N,n=t.K,m=t.Mq
-return new A.vn(A.aa(["Alertas",A.b([A.aa(["title","Brownie recheado","subtitle",s,"description","As vendas do produto aumentaram em rela\xe7\xe3o ao m\xeas anterior.","fields",A.b([A.aa(["name","M\xeas refer\xeancia:","value","Agosto"],q,q),A.aa(["name","M\xeas anterior:","value","Julho"],q,q),A.aa(["name","Quantidade:","value","176"],q,q),A.aa(["name","Quantidade:","value","123"],q,q),A.aa(["name","Receita:","value","R$1408,00"],q,q),A.aa(["name","Receita:","value","R$984,00"],q,q),A.aa(["name","Varia\xe7\xe3o:","value","53 UND (R$424,00)"],q,q)],p),"color","4bab5d","photo","https://logging.discloud.app/Expresso/brownies.png"],o,n),A.aa(["title","Sach\xea de maionese","subtitle",s,"description","As vendas do produto diminuiram em rela\xe7\xe3o ao m\xeas anterior.","fields",A.b([A.aa(["name","M\xeas refer\xeancia:","value","Agosto"],q,q),A.aa(["name","M\xeas anterior:","value","Julho"],q,q),A.aa(["name","Quantidade:","value","697"],q,q),A.aa(["name","Quantidade:","value","832"],q,q),A.aa(["name","Receita:","value","R$697,00"],q,q),A.aa(["name","Receita:","value","R$832,00"],q,q),A.aa(["name","Varia\xe7\xe3o:","value",r],q,q)],p),"color","d44242","photo","https://logging.discloud.app/Expresso/saches.png"],o,n)],m),"Metas",A.b([A.aa(["title","Chopp Pilsen","subtitle","Progresso da meta","fields",A.b([A.aa(["name","Vendas:","value","70"],q,q),A.aa(["name","Meta:","value","100"],q,q),A.aa(["name","Varia\xe7\xe3o:","value",r],q,q)],p),"progress",75,"color","547cb8","photo","https://logging.discloud.app/Expresso/pilsen.jpg"],o,n)],m)],q,q))}}
+ai(){var s="Varia\xe7\xe3o nas vendas",r=t.z,q=t.n4,p=t.N,o=t.K,n=t.Mq
+return new A.vn(A.aa(["Alertas",A.b([A.aa(["title","Brownie recheado","subtitle",s,"description","As vendas do produto aumentaram em rela\xe7\xe3o ao m\xeas anterior.","fields",A.b([A.aa(["name","M\xeas refer\xeancia:","value","Agosto"],r,r),A.aa(["name","M\xeas anterior:","value","Julho"],r,r),A.aa(["name","Quantidade:","value","176"],r,r),A.aa(["name","Quantidade:","value","123"],r,r),A.aa(["name","Receita:","value","R$1408,00"],r,r),A.aa(["name","Receita:","value","R$984,00"],r,r),A.aa(["name","Varia\xe7\xe3o:","value","53 UND (R$424,00)"],r,r)],q),"color","4bab5d","photo","https://logging.discloud.app/Expresso/brownies.png"],p,o),A.aa(["title","Sach\xea de maionese","subtitle",s,"description","As vendas do produto diminuiram em rela\xe7\xe3o ao m\xeas anterior.","fields",A.b([A.aa(["name","M\xeas refer\xeancia:","value","Agosto"],r,r),A.aa(["name","M\xeas anterior:","value","Julho"],r,r),A.aa(["name","Quantidade:","value","697"],r,r),A.aa(["name","Quantidade:","value","832"],r,r),A.aa(["name","Receita:","value","R$697,00"],r,r),A.aa(["name","Receita:","value","R$832,00"],r,r),A.aa(["name","Varia\xe7\xe3o:","value","135 UND (R$135,00)"],r,r)],q),"color","d44242","photo","https://logging.discloud.app/Expresso/saches.png"],p,o)],n),"Metas",A.b([A.aa(["title","Chopp Pilsen","subtitle","Progresso da meta","fields",A.b([A.aa(["name","Vendas atuais:","value","97"],r,r),A.aa(["name","Meta de ventas:","value","150"],r,r),A.aa(["name","Progresso:","value","64% (\u2193 15 UND)"],r,r)],q),"progress",64,"color","547cb8","photo","https://logging.discloud.app/Expresso/pilsen.jpg"],p,o)],n)],r,r))}}
 A.vn.prototype={
 bj(a){this.al(new A.a1Q(this,a))},
 M(a){var s,r=this

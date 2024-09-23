@@ -51,18 +51,18 @@ class _ComercialPageState extends State<ComercialPage> {
         "title": "Chopp Pilsen",
         "subtitle": "Progresso da meta",
         "fields": <Map>[
-          {"name": "Vendas:", "value": "70"},
-          {"name": "Meta:", "value": "100"},
-          {"name": "Variação:", "value": "135 UND (R\$135,00)"},
+          {"name": "Vendas atuais:", "value": "97"},
+          {"name": "Meta de ventas:", "value": "150"},
+          {"name": "Progresso:", "value": "64% (↓ 15 UND)"},
         ],
-        "progress": 75,
+        "progress": 64,
         "color": "547cb8",
         "photo": "https://logging.discloud.app/Expresso/pilsen.jpg"
       }
     ],
   };
 
-  String tab = "Alertas";
+  String tab = "Metas";
   late Widget page;
   void update(String tabname) {
     setState(() {
