@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.red,
             primary: const Color.fromRGBO(240, 40, 30, 1),
-            secondary: const Color.fromRGBO(125, 25, 30, 1),
+            secondary: Colors.white, //Color.fromRGBO(125, 25, 30, 1),
             tertiary: const Color.fromRGBO(255, 200, 15, 1),
             tertiaryContainer: const Color.fromARGB(255, 150, 100, 7)),
         useMaterial3: true,
