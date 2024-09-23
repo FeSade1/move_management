@@ -52,7 +52,7 @@ class _ComercialPageState extends State<ComercialPage> {
         "subtitle": "Progresso da meta",
         "fields": <Map>[
           {"name": "Vendas atuais:", "value": "97"},
-          {"name": "Meta de ventas:", "value": "150"},
+          {"name": "Meta de vendas:", "value": "150"},
           {"name": "Progresso:", "value": "64% (↓ 15 UND)"},
         ],
         "progress": 64,
