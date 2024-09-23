@@ -62,7 +62,7 @@ class _ComercialPageState extends State<ComercialPage> {
     ],
   };
 
-  String tab = "Metas";
+  String tab = "Alertas";
   late Widget page;
   void update(String tabname) {
     setState(() {
