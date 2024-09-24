@@ -89,7 +89,7 @@ class Card extends StatelessWidget {
                       width: 120,
                     ),
               const SizedBox(
-                width: 10,
+                width: 5,
               ),
               Expanded(
                 child: Column(
@@ -110,14 +110,14 @@ class Card extends StatelessWidget {
                           "Admissão:",
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
                           "Ultimo feedback:",
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold),
                         )
                       ],
@@ -129,14 +129,14 @@ class Card extends StatelessWidget {
                           data["since"],
                           style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
                           data["last"],
                           style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -147,12 +147,12 @@ class Card extends StatelessWidget {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
-                                  Color.fromARGB(255, 30, 146, 175),
+                                  const Color.fromARGB(255, 30, 146, 175),
                             ),
                             onPressed: () {},
                             child: const Text('Atualizar feedback',
                                 style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold)),
                           ),
